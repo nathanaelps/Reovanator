@@ -1,6 +1,9 @@
-name: Prettifier
-main: com.thespuff.plugins.prettifier.Prettifier
+name: Superpower
+main: com.thespuff.plugins.superpower.Superpower
 author: nathanaelps
 version: 1.11.2a
 commands:
+  superpowers:
+      description: List Current Superpower Levels
+      usage: /superpowers
 permissions:

@@ -1,5 +1,17 @@
-prettifier:
-    - GRASS
-    - MYCEL
-    - PODZL
-    - SAND
+superpower:
+  defaults:
+    speed: 0
+    air: 0
+    jump: 0
+    durability: 0
+    farmer: 0
+    miner: 0
+    hunter: 0
+  accordingtominecraft:
+    speed: 0.20000000298023224
+    air: 300.0
+    jump: 1.0
+    durability: 20.0
+    farmer: 1.0
+    miner: 1.0
+    hunter: 1.0
