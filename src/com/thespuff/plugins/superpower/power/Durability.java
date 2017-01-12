@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 
 /**
  * Created by nsmith on 2017-01-03.
- * thespuff.com
+ * Sets durability (hearts) in MC.
  */
 public class Durability extends Power{
 

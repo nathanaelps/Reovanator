@@ -25,15 +25,17 @@ public class SuperpowerPlayer{
     powers.add(new LungCapacity(player));
     powers.add(new Pool(player));
 
-    Superpower.server.getScheduler().scheduleSyncDelayedTask(Superpower.plugin, () -> loadAll(), 5L);
+    Superpower.server.getScheduler().scheduleSyncDelayedTask(Superpower.plugin, this::loadAll, 5L);
   }
 
   public Power select(String name){
-    for(Iterator<Power> i=powers.iterator(); i.hasNext(); ){
-      Power power=i.next();
+    for(Power power : powers){
       if(power.getName().equals(name)) return power;
     }
     return new DebugPower(player);
+  }
+  public boolean settingsExist(){
+    return (Superpower.plugin.getConfig().contains("superpower.players."+player.getName()));
   }
 
   public void log(Object in){ Superpower.plugin.log(in); }
@@ -61,21 +63,23 @@ public class SuperpowerPlayer{
     power.save();
   }
   public void list(){
-    for(Iterator<Power> i=powers.iterator(); i.hasNext(); ){
-      Power power=i.next();
+    for(Power power : powers){
       power.list();
     }
   }
   public void loadAll(){
-    for(Iterator<Power> i=powers.iterator(); i.hasNext(); ){
-      Power power=i.next();
+    if(!settingsExist()){
+      resetAll();
+      return;
+    }
+
+    for(Power power : powers){
       power.load();
       power.apply();
     }
   }
   public void resetAll(){
-    for(Iterator<Power> i=powers.iterator(); i.hasNext(); ){
-      Power power=i.next();
+    for(Power power : powers){
       power.reset();
       power.apply();
       power.save();

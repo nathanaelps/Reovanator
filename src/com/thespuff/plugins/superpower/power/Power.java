@@ -52,10 +52,18 @@ public abstract class Power{
   public void load(){
     Double levels;
     try{
-      String levelstring=Superpower.plugin.getConfig().getString("superpower.players." + player.getName() + "." + name);
-      levels=Double.parseDouble(levelstring);
+      if(Superpower.plugin.getConfig().contains("superpower.players." + player.getName() + "." + name)){
+
+        String levelstring=Superpower.plugin.getConfig().getString("superpower.players." + player.getName() + "." + name);
+        levels=Double.parseDouble(levelstring);
+      } else{
+//        levels =Double.valueOf(base);
+//        log("Player "+player.getName()+": Failed to load "+name+". Defaulting to "+base);
+//        save();
+        throw new NullPointerException("not found");
+      }
     }catch(NullPointerException npe){
-      levels =Double.valueOf(base);
+      levels = (double) base;
       log("Player "+player.getName()+": Failed to load "+name+". Defaulting to "+base);
       save();
     }

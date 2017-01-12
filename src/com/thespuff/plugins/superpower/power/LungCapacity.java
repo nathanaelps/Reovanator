@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 
 /**
  * Created by nsmith on 2017-01-03.
+ * sets LungCapacity (bubbles) in MC
  */
 public class LungCapacity extends Power{
 
